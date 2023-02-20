@@ -1,59 +1,71 @@
-// -------------Data types------------
+// -------------Операторы сравнения и условия------------
 
-// Текст
+// > - більше
+// < - менше
+// >= - більше чи дорівнює
+// <= - менше чи дорівнює
+// == - несуворе порівняння
+// === - суворе порівняння
+// != - несувора нерівність
+// !== - сувора нерівність
 
-let userName = 'Sasha'; // Строка(текст) (Одне слово, фраза, речення, абзац, дуже багато тексту)
+console.log(10 > 5) // true - спочатку виконалось порівняння, а потім у консоль вивелось значення
+console.log(20 > 80) // false
 
-// Число
+let result = 10 < 5 
+console.log(result); // false
+// Спочатку порівнюється, потім записується у result, потім виводиться у консоль
+ 
+// -------Порівняння( comparison )------------
+console.log('5' == 5); // true
 
-let age = 30; // Число
+console.log('5' === 5); // false
 
-// Логічне значення true/false
+// ------------Операция присвоения ( равно(=) )------------
+console.log('10' = 10); 
 
-let isMarried = true; 
+let number = 5;
+console.log(number = 10); // нужно юзать 2равно(==) и 3равно(===)
+console.log(number == 10);
 
-//Динамічна типізація
+let number = 5
+if (number = 10) {
+    console.log(111)
+    console.log(number)
+}
 
-let someVaribale = 'Some value'; // someVariable типу String
-someVariable = 40; // тепер someVariable типу number
-someVariable = true; // тепер someVariable типу BooLean
+// -----------Умови ( if )-----------
+/*
+if ( condition ) {
+    Код, который будет выполнен, если условие верно
+} else {
+    Код, который будет выполнен, если условие НЕ верно
+}
+*/
 
-// Плоганий приклад неймінга
-let u = 'bobik';
+// ---------Example #1------------
+const time = 12;
 
-// Хороший example неймінга
-let userName = 'James';
+if (time < 12) {
+    console.log('Good morning');
+}   else {
+    console.log('Good afternoon');
+}
 
-// Значення - null
-let height = 33;
-height = null;
+// --------------Example #2---------------
+const time = 21;
 
-//undefined
-// Означает, что значение не было присвоено
-// Если переменная объявлена, но ей не присвоено никакого значения, то ее значение будет undefined
-let userCall; 
-console.log(userCall);
+if (time < 12) {
+    console.log('Good morning');
+}   else if (time >= 12 && time < 18) {
+    console.log('Good afternoon');
+}   else {
+    console.log('Good evening');
+}
 
-let someCall = 'Jimmy';
-someCall = undefined; // так не делают
-someCall = null; // Делают так
-
-
-// Оператор typeof
-const someThing = 'Nora';
-console.log(typeof someThing);
-
-// BigInt
-// Встроенный объект, который позволяет создавать большие числа
-console.log(Number.MAX_SAFE_INTEGER); // максимальне ціле число 9007199254740991
-
-console.log(9007199254740991 + 9007199254740991)
-
-console.log(3845325287358732675256926892365892) // Отобразиться 3.8453252873587325e+33
-
-console.log(3845325287358732675256926892365892n)
-
-console.log(3845325287358732675256926892365892n + 8941418724741) // помилка
-
-// Symbol уникальное примитивное значение
-// Позволяет добавлять уникальное свойство к объекту, с увереностью, что он не перезапишет никакое другое свойство 
+// ----------Логические операторы---------
+/*
+&& - логическое И (AND) 
+|| - логическое ИЛИ (OR)
+!true - логическое НЕ (NOT)
+*/
