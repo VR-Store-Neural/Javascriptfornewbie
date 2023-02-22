@@ -1,41 +1,76 @@
-// ---------------Тернарный оператор------------------
+// // ---------------Конкатенация(склеивание) строк и шаблонные строки------------------
 
-// ------------1------------
+// let greeting = 'Hello!';
+// let howAreYou = '_How are you?';
 
-// if (10 < 12) {
-//     console.log('Условие верно');
-//     } else {
-//         console.log('Условие НЕ верно');
+// let sayHi = greeting + howAreYou;
+// console.log(sayHi);
+
+// // конкатенация 'строка' + 'строка'
+
+// const userName = 'Peter';
+// console.log('Hello, ' + userName + '! How are you');
+
+// // конкатенация строки
+
+// const userName2 = 'Vasya';
+// console.log(`Hello, ${userName2}! How are you?`);
+
+
+// // -----------------Functions------------------
+
+// console.log('Hi, dear user!');
+
+// // DRY - don't repeat yourself
+
+// function sayHallo() {
+//     console.log('Hi, respected user!');
+// }
+
+// sayHallo();
+//     sayHallo();
+//         sayHallo();
+//             sayHallo();
+
+// // fuction decloration (функция может быть вызвана до ее объявления)
+
+//     sayHello(){
+//         alert('Bonjour');
+//     };
+
+// // fuction expression (функция вызывается только после ее объявления)
+
+//     const sayHello = function() {
+//         alert('Bonjour');
 //     }
 
-// Тернарник
-// (условие) ? (условие верно) : (условие НЕ верно);
+// ---------------Parametrs and arguments for functions---------------
 
-//  210 < 12 ? console.log('Condition is true') : console.log('Condition isnt true');
+// function sayHi(userName) {
+//     console.log(`Hello, ${userName}! How are you? `);
+// }
 
-// -----------2-----------
+// sayHi('Sasha');
+// sayHi('James');
+// sayHi('Lotus');
 
-// let greeting;
 
-// if (10 < 12) {
-//     greeting = 'Good morning';
-//     } else {
-//         greeting = 'Good afternoon';
-//         }
+// --------------------return-----------------
 
-// ----------or-----------
+// function summ(a,b) {
+//     const result = a + b;
+//     console.log(result);
+// }
+// summ(10, 15);
 
-// let greeting;
-// let time = 10;
+// -------------------------------------------
 
-// if (time < 12) {
-//     greeting = 'Good morning';
-//     } else {
-//         greeting = 'Good afternoon';
-//         }
-// console.log(greeting);
+function summ(a, b) {
+    console.log('Start'); // увидим єту строку в консоле
+    const result = a + b;
+    return result;
+    console.log('Finish'); // не увидим єту строку в консоле, так как return заканчивает функцию
+}
 
-// Тернарник
-let time = 12
-let greeting = time < 12 ? 'Good morning' : 'Good afternoon';
-console.log(greeting);
+let res = summ(10, 15);
+console.log(res);
