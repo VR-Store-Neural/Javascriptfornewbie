@@ -1,71 +1,41 @@
-// -------------Операторы сравнения и условия------------
+// ---------------Тернарный оператор------------------
 
-// > - більше
-// < - менше
-// >= - більше чи дорівнює
-// <= - менше чи дорівнює
-// == - несуворе порівняння
-// === - суворе порівняння
-// != - несувора нерівність
-// !== - сувора нерівність
+// ------------1------------
 
-console.log(10 > 5) // true - спочатку виконалось порівняння, а потім у консоль вивелось значення
-console.log(20 > 80) // false
+// if (10 < 12) {
+//     console.log('Условие верно');
+//     } else {
+//         console.log('Условие НЕ верно');
+//     }
 
-let result = 10 < 5 
-console.log(result); // false
-// Спочатку порівнюється, потім записується у result, потім виводиться у консоль
- 
-// -------Порівняння( comparison )------------
-console.log('5' == 5); // true
+// Тернарник
+// (условие) ? (условие верно) : (условие НЕ верно);
 
-console.log('5' === 5); // false
+//  210 < 12 ? console.log('Condition is true') : console.log('Condition isnt true');
 
-// ------------Операция присвоения ( равно(=) )------------
-console.log('10' = 10); 
+// -----------2-----------
 
-let number = 5;
-console.log(number = 10); // нужно юзать 2равно(==) и 3равно(===)
-console.log(number == 10);
+// let greeting;
 
-let number = 5
-if (number = 10) {
-    console.log(111)
-    console.log(number)
-}
+// if (10 < 12) {
+//     greeting = 'Good morning';
+//     } else {
+//         greeting = 'Good afternoon';
+//         }
 
-// -----------Умови ( if )-----------
-/*
-if ( condition ) {
-    Код, который будет выполнен, если условие верно
-} else {
-    Код, который будет выполнен, если условие НЕ верно
-}
-*/
+// ----------or-----------
 
-// ---------Example #1------------
-const time = 12;
+// let greeting;
+// let time = 10;
 
-if (time < 12) {
-    console.log('Good morning');
-}   else {
-    console.log('Good afternoon');
-}
+// if (time < 12) {
+//     greeting = 'Good morning';
+//     } else {
+//         greeting = 'Good afternoon';
+//         }
+// console.log(greeting);
 
-// --------------Example #2---------------
-const time = 21;
-
-if (time < 12) {
-    console.log('Good morning');
-}   else if (time >= 12 && time < 18) {
-    console.log('Good afternoon');
-}   else {
-    console.log('Good evening');
-}
-
-// ----------Логические операторы---------
-/*
-&& - логическое И (AND) 
-|| - логическое ИЛИ (OR)
-!true - логическое НЕ (NOT)
-*/
+// Тернарник
+let time = 12
+let greeting = time < 12 ? 'Good morning' : 'Good afternoon';
+console.log(greeting);
