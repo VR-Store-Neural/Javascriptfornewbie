@@ -1,123 +1,69 @@
-// // ---------------Конкатенация(склеивание) строк и шаблонные строки------------------
+// -------------Стрелочные функции-----------------
 
-// let greeting = 'Hello!';
-// let howAreYou = '_How are you?';
-
-// let sayHi = greeting + howAreYou;
-// console.log(sayHi);
-
-// // конкатенация 'строка' + 'строка'
-
-// const userName = 'Peter';
-// console.log('Hello, ' + userName + '! How are you');
-
-// // конкатенация строки
-
-// const userName2 = 'Vasya';
-// console.log(`Hello, ${userName2}! How are you?`);
-
-
-// // -----------------Functions------------------
-
-// console.log('Hi, dear user!');
-
-// // DRY - don't repeat yourself
-
-// function sayHallo() {
-//     console.log('Hi, respected user!');
+// function sayHi(name) {
+//     console.log(`Hi, ${name}! How are you?`); // decloratin
 // }
+// sayHi('Marge');
 
-// sayHallo();
-//     sayHallo();
-//         sayHallo();
-//             sayHallo();
 
-// // fuction decloration (функция может быть вызвана до ее объявления)
-
-//     sayHello(){
-//         alert('Bonjour');
-//     };
-
-// // fuction expression (функция вызывается только после ее объявления)
-
-//     const sayHello = function() {
-//         alert('Bonjour');
-//     }
-
-// ---------------Parametrs and arguments for functions---------------
-
-// function sayHi(userName) {
-//     console.log(`Hello, ${userName}! How are you? `);
+// стрелочный вариант
+// const SayHi2 = (name) => {
+//     console.log(`Hi, ${name}! How are you?`); 
 // }
+// SayHi2('Marchello');
 
-// sayHi('Sasha');
-// sayHi('James');
-// sayHi('Lotus');
+// стрелочный вариант, укороченный
+// const sayHi3 = (name) => console.log(`Hello, ${name}! What do you need?`);
+// sayHi3('Bobby');
 
-
-// --------------------return-----------------
-
-// function summ(a,b) {
-//     const result = a + b;
-//     console.log(result);
-// }
-// summ(10, 15);
-
-// -------------------------------------------
 
 // function summ(a, b) {
-//     console.log('Start'); // увидим єту строку в консоле
+//     const result = a + b;
+// }
+
+// // стрелочный вариант
+// const summ = (a, b) => {
 //     const result = a + b;
 //     return result;
-//     console.log('Finish'); // не увидим єту строку в консоле, так как return заканчивает функцию
 // }
 
-// let res = summ(10, 15);
+// стрелочный вариант, укороченный
+// const summ = (a, b) => a + b;
+
+// const res = summ(10, 30);
 // console.log(res);
 
-// ----------Функция как аргумент-------------
+// ------------------Массивы------------------
 
-// function summ(a, b) {
-//     return a + b;
-// }
-// // console.log(summ(15, 15));
+// const autoBrands = ['Audi', 5, 'BMW', true, 'Mazda', 'Toyota', ['Vera', 'Nadejda', 'Halo'], 101];
 
-// const result = summ(summ(15, 4), summ(20, 30));
-// console.log(result);
+// console.log(autoBrands);
 
-// ----------------------------------------
+// console.log(autoBrands[0]);
 
-// function sum (a, b) {
-//     return a + b;
-// }
+// console.log(autoBrands.length); // возвращает длину массива, кол-во элементов
 
-// function diff (a, b) {
-//     return a - b;
-// }
 
-// function doSomething(func) {
-//     let x = 11;
-//     let y = 34;
-//     let result = func(x,y);
-//     console.log(result);
-// }
-// doSomething(sum);
-// doSomething(diff);
+// -------------Методы массивов---------------
 
-// -----------------------Самовызывающаяся функция IIFE((Immediately Invoked Function Expression)----------------
+/*
+.push() - Додати елемент в кінець масиву(array)
+.pop() - Видалити елемент з кінця array
+.shift - Видалити елемент з початку array
+.unshift - Додати елемент з початку array
+.splice([start], [deleteCount, newElemets]) - 
+*/
 
-(function () {
-    
-    console.log('Hi, dear Mr. Frog!') // Анонимная, самовызывающаяся функция
-})();
+const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
+console.log(autoBrands);
 
-(function summ(a, b) {
-    console.log(a);
-    console.log(b);
-    console.log(a + b);
-})(67, 76);
+autoBrands.push('Nissan');
+console.log(autoBrands);
 
-let result = (function (a, b) {
-    return a + b;
-})(33, 76);
-console.log(result);
+// autoBrands = [1, 2, 45]; // --error
+
+let array2 = autoBrands; //array2 == autoBrands - true
+let array3 = ['Audi', 'BMW', 'Mazda', 'Toyota']; //array3 == autoBrands - false
+
+autoBrands.splice(2, 1);
+console.log(autoBrands);
