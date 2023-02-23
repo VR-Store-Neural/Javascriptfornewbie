@@ -65,12 +65,59 @@
 
 // -------------------------------------------
 
-function summ(a, b) {
-    console.log('Start'); // увидим єту строку в консоле
-    const result = a + b;
-    return result;
-    console.log('Finish'); // не увидим єту строку в консоле, так как return заканчивает функцию
-}
+// function summ(a, b) {
+//     console.log('Start'); // увидим єту строку в консоле
+//     const result = a + b;
+//     return result;
+//     console.log('Finish'); // не увидим єту строку в консоле, так как return заканчивает функцию
+// }
 
-let res = summ(10, 15);
-console.log(res);
+// let res = summ(10, 15);
+// console.log(res);
+
+// ----------Функция как аргумент-------------
+
+// function summ(a, b) {
+//     return a + b;
+// }
+// // console.log(summ(15, 15));
+
+// const result = summ(summ(15, 4), summ(20, 30));
+// console.log(result);
+
+// ----------------------------------------
+
+// function sum (a, b) {
+//     return a + b;
+// }
+
+// function diff (a, b) {
+//     return a - b;
+// }
+
+// function doSomething(func) {
+//     let x = 11;
+//     let y = 34;
+//     let result = func(x,y);
+//     console.log(result);
+// }
+// doSomething(sum);
+// doSomething(diff);
+
+// -----------------------Самовызывающаяся функция IIFE((Immediately Invoked Function Expression)----------------
+
+(function () {
+    
+    console.log('Hi, dear Mr. Frog!') // Анонимная, самовызывающаяся функция
+})();
+
+(function summ(a, b) {
+    console.log(a);
+    console.log(b);
+    console.log(a + b);
+})(67, 76);
+
+let result = (function (a, b) {
+    return a + b;
+})(33, 76);
+console.log(result);
