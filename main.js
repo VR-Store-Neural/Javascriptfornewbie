@@ -1,65 +1,61 @@
-// ----Обход объектов циклом for in (не путать с for of)----
+// ------Выбор DOM элементов------
 
-// const person = {
-//     userName: 'Marissa',
-//     age: 19,
-//     isMarried: true,
-//     sayHi: function (yourName) {
-//         console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
-//         },
-// };
+// Выбор одного элемента DOM по селектору
+// document.querySeLector('selector');
 
-// for (let key in person) {
-//     // console.log(key);
-//     console.log(key, ':', person[key]);
-// } 
+// document.querySelector('h1')
+// document.querySelector('p')
+// document.querySelector('.red')
+// document.querySelector('.header')
+// document.querySelector('#footer')
+// document.querySelector('.header .nav . link a')
+// document.querySelector('h2')
+// document.querySelector('h1')
+// document.querySelector('h1')
 
-// ------Классы. Конструкторы объектов------------
+// const header = document.querySelector('h2');
+// console.log(header);
 
-const person1 = {
-    userName: 'Marissa',
-    age: 19,
-    isMarried: true,
-    sayHi: function (yourName) {
-        console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
-        },
-};
+// document.querySelector('h2').classList.add('blue');
+// document.querySelector('h1').classList.add('red');
 
-console.log(person1);
-
-const person2 = {
-    userName: 'Lilloo',
-    age: 39,
-    isMarried: false,
-    sayHi: function (yourName) {
-        console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
-        },
-};
-
-console.log(person2);
+// document.querySelector('.heading-3').classList.add('green');
 
 
-// Опишем класс, это как чертеж для всех будущих объектов person, которые будут создаваться на его основе
+// ---------document.querySelectorAll-------------
 
-class Person {
-    constructor(userName, age, isMarried) { // описали конструктор
-        this.userName = userName;
-        this.age = age;
-        this.isMarried = isMarried; 
-    }
-    sayHi(name) {
-        console.log(`Hallo, ${name}! My name is ${this.userName}.`); // когда описываем метод в классе не пишем function - "sayHi: function (yourName) {console.log(`Hello, ${yourName}! My name is ${this.userName}.`);},"
-    }
-}
+// ----Выбор одного элемента DOM по селектору-----
+// const heading2 = document.querySelector('h2');
+// heading2.classList.add('red');
 
-const person3 = new Person('Bobby', 99, false); // создали объект на основе конструктора
+// ----Выбор коллекции элемнетов-----
+// const headings = document.querySelectorAll('h2');
+// console.log(headings);
 
-console.log(person3);
+// headings.classList.add('red-text'); не работает
 
-const person4 = new Person('Milly', 32, true); 
+// for (let item of headings) {
+//     console.log(item);
+//     item.classList.add('red-text')
+// }
 
-console.log(person4);
+// const heading3 = document.querySelector('h3');
+// for (let item1 of headings) {
+//     item1.classList.add('red-text')
+// }
 
-person3.sayHi('Marchello');
-person4.sayHi('Rosa')
+// const paragraphs = document.querySelectorAll('p');
+// for (let p of paragraphs) {
+//     p.classList.add('green-text');
+// }
+
+// paragraphs.forEach(function (item2) {
+//     item2.classList.add('green-text');
+// })
+
+
+
+document.getElementsByClassName('link'); // выбор коллекции элементов по CSS классу (без точки)
+document.getElementsByTagName('h2'); // выбор коллекции элементов по Тегу
+document.getElementById(header); // выбор одного элемента по ID (без #)
 
