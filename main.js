@@ -54,16 +54,97 @@
 .splice([start], [deleteCount, newElemets]) - 
 */
 
-const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
-console.log(autoBrands);
+// const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
+// console.log(autoBrands);
 
-autoBrands.push('Nissan');
-console.log(autoBrands);
+// autoBrands.push('Nissan');
+// console.log(autoBrands);
 
 // autoBrands = [1, 2, 45]; // --error
 
-let array2 = autoBrands; //array2 == autoBrands - true
-let array3 = ['Audi', 'BMW', 'Mazda', 'Toyota']; //array3 == autoBrands - false
+// let array2 = autoBrands; //array2 == autoBrands - true
+// let array3 = ['Audi', 'BMW', 'Mazda', 'Toyota']; //array3 == autoBrands - false
 
-autoBrands.splice(2, 1);
-console.log(autoBrands);
+// autoBrands.splice(2, 1);
+// console.log(autoBrands);
+
+// ---------------------Циклы-----------------
+
+// console.log('Start');
+
+// for (let i = 0; i < 10; i++) {  // "i++" - увеличение на 1
+//     console.log(i);
+// }
+
+// console.log('Finish');
+
+// console.log('Start');
+
+// for (let i = 0; true; i++) {  // бесконечный цикл
+//     console.log(i);
+// }
+
+// console.log('Finish');
+
+// console.log('Start');
+
+// for (let i = 0; i < 10; i = i + 2) { 
+//     console.log(i); 
+// }
+
+// console.log('Finish');
+
+// --------------Обход массива циклом for-----------------
+
+// const autoBrands = ['Audi','BMW','Mazda','Toyota'];
+
+// console.log(autoBrands[0]);
+// console.log(autoBrands[1]);
+// console.log(autoBrands[2]);
+// console.log(autoBrands[3]);
+// console.log(autoBrands[4]);
+// console.log(autoBrands[5]);
+
+// for (m = 0; m < 5; m++) {
+//     console.log(autoBrands[m])
+//     console.log(m);
+// }
+
+// for (m = 0; m < autoBrands.length; m++) {
+//     console.log(autoBrands[m])
+//     console.log(m);
+// }
+
+// --------------Обход массива циклом for (of)-----------
+
+// const girls = ['masha', 'dasha', 'kasha', 'vasha', 'lasha'];
+
+// for (let girl of girls) {
+//     console.log(girl);
+// }
+
+// ------Обход массива методом forEach()------------
+
+const flowers = ['Rose', 'Dandelion', 'Sunflower', 'Chamomile'];
+
+flowers.forEach(function (flower, index) {
+    console.log(`${flower} => ${index}`);
+})
+
+console.log(`----------------`);
+
+flowers.forEach(printFlower);
+
+function printFlower (flower, i) {
+    console.log(`${flower} => ${i}`);
+}
+
+// flowers.forEach(printFlower());
+
+// function printFlower (flower, i) {
+//     console.log(`${flower} => ${i}`);
+// }
+
+console.log(`----------------`);
+
+flowers.forEach((flower, i) => console.log(`${flower} => ${i}`));
