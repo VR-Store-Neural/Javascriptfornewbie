@@ -1,61 +1,25 @@
-// ------Выбор DOM элементов------
+// ------Работа с CSS классами------
 
-// Выбор одного элемента DOM по селектору
-// document.querySeLector('selector');
+/*
+element.classList.add()
+.add()      добавляет CSS класс
+.remove()   удаляет CSS класс
+.toggle()   переключает CSS класс, то есть добавляет, если класс отсутствует и удаляет, если есть
+.contains() возвращает true/false, в зависимости есть такой класс или нет
+*/
 
-// document.querySelector('h1')
-// document.querySelector('p')
-// document.querySelector('.red')
-// document.querySelector('.header')
-// document.querySelector('#footer')
-// document.querySelector('.header .nav . link a')
-// document.querySelector('h2')
-// document.querySelector('h1')
-// document.querySelector('h1')
+// const heading = document.querySelector('h2');
+// console.log(heading);
 
-// const header = document.querySelector('h2');
-// console.log(header);
+// heading.classList.add('red-text');
+// heading.classList.remove('red-text');
 
-// document.querySelector('h2').classList.add('blue');
-// document.querySelector('h1').classList.add('red');
+// heading.classList.toggle('green-text');
+// heading.classList.toggle('green');
 
-// document.querySelector('.heading-3').classList.add('green');
+const heading = document.querySelector('h2');
 
-
-// ---------document.querySelectorAll-------------
-
-// ----Выбор одного элемента DOM по селектору-----
-// const heading2 = document.querySelector('h2');
-// heading2.classList.add('red');
-
-// ----Выбор коллекции элемнетов-----
-// const headings = document.querySelectorAll('h2');
-// console.log(headings);
-
-// headings.classList.add('red-text'); не работает
-
-// for (let item of headings) {
-//     console.log(item);
-//     item.classList.add('red-text')
-// }
-
-// const heading3 = document.querySelector('h3');
-// for (let item1 of headings) {
-//     item1.classList.add('red-text')
-// }
-
-// const paragraphs = document.querySelectorAll('p');
-// for (let p of paragraphs) {
-//     p.classList.add('green-text');
-// }
-
-// paragraphs.forEach(function (item2) {
-//     item2.classList.add('green-text');
-// })
-
-
-
-document.getElementsByClassName('link'); // выбор коллекции элементов по CSS классу (без точки)
-document.getElementsByTagName('h2'); // выбор коллекции элементов по Тегу
-document.getElementById(header); // выбор одного элемента по ID (без #)
-
+const result = heading.classList.contains('green');   // результат contains записываем в переменную, и на основании этого выполняем то или иное условие
+if (result) {
+    
+}
