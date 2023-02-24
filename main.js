@@ -1,103 +1,65 @@
-// -------------Objects-----------------
-
-// let userName = 'Mark';
-// let age = 33;
-// let isMarried = false;
-
-// const person = {            // объявление свойств объекта
-//     userName: 'Mark',
-//     age: 33,
-//     isMarried: false,
-//     profession: 'Designer'
-// }
-
-// console.log(person);
-// console.log(person.userName);
-// console.log(person['age']);
-
-// let propertyName = 'profession';
-// console.log(person[propertyName]);
-
-// person.profession = 'JS developer'; // добавление свойств объекта
-// console.log(person);
-
-// delete person.age; // удаление свойств объекта
-// console.log(person);
-
-// ------------Методы в объектах------------
+// ----Обход объектов циклом for in (не путать с for of)----
 
 // const person = {
-//     userName: 'Klara',
-//     age: 33,
-//     isMarried: false,
-//     sayHi: function () {
-//         console.log('Hello!');
-//     }
+//     userName: 'Marissa',
+//     age: 19,
+//     isMarried: true,
+//     sayHi: function (yourName) {
+//         console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
+//         },
 // };
 
-// person.sayHi()
+// for (let key in person) {
+//     // console.log(key);
+//     console.log(key, ':', person[key]);
+// } 
 
-// const human = {
-//     userName: 'Klara',
-//     age: 33,
-//     isMarried: false,
-//     sayHi: function () {
-//         console.log('Hello!');
-//     }
-// };
+// ------Классы. Конструкторы объектов------------
 
-// human.sayHi = function () {
-//     console.log('Hi-hi-hi!');
-// }
-// human.sayHi()
+const person1 = {
+    userName: 'Marissa',
+    age: 19,
+    isMarried: true,
+    sayHi: function (yourName) {
+        console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
+        },
+};
 
-// const girl = {
-//     userName: 'Klara',
-//     age: 33,
-//     isMarried: false,
-//     sayHi: function () {
-//         console.log('Hello!');
-//     }
-// };
+console.log(person1);
 
-// girl.sayHi = function (name) {
-//     console.log(`Privet, ${name}!`);
-// }
-// girl.sayHi('Olena');
-
-// const people = {
-//     userName: 'Kiki',
-//     age: 21,
-//     isMarried: false,
-//     sayHi: function (name) {
-//         console.log(`Hello, ${name}!`);
-//     }
-// }
-
-// people.sayHi('Vasya')
-
-
-// -------------Ключевое слово this-------------
-
-const people = {
-    userName: 'Kiki',
-    age: 21,
+const person2 = {
+    userName: 'Lilloo',
+    age: 39,
     isMarried: false,
-    sayHi: function (name) {
-        console.log(`Hello, ${name}! My name is ${people.userName}.`);
+    sayHi: function (yourName) {
+        console.log(`Hello, ${yourName}! My name is ${this.userName}.`);
+        },
+};
+
+console.log(person2);
+
+
+// Опишем класс, это как чертеж для всех будущих объектов person, которые будут создаваться на его основе
+
+class Person {
+    constructor(userName, age, isMarried) { // описали конструктор
+        this.userName = userName;
+        this.age = age;
+        this.isMarried = isMarried; 
+    }
+    sayHi(name) {
+        console.log(`Hallo, ${name}! My name is ${this.userName}.`); // когда описываем метод в классе не пишем function - "sayHi: function (yourName) {console.log(`Hello, ${yourName}! My name is ${this.userName}.`);},"
     }
 }
 
-people.sayHi('Vasya');
+const person3 = new Person('Bobby', 99, false); // создали объект на основе конструктора
 
-const coala = {
-    userName: 'Kiki',
-    age: 21,
-    isMarried: false,
-    sayHi: function (name) {
-        console.log(this);
-        console.log(`Hello, ${name}! My name is ${this.userName}.`);
-    }
-}
+console.log(person3);
 
-coala.sayHi('Vasya')
+const person4 = new Person('Milly', 32, true); 
+
+console.log(person4);
+
+person3.sayHi('Marchello');
+person4.sayHi('Rosa')
+
