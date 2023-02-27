@@ -1,50 +1,66 @@
-// ---------------Створення та копіювання елементів------------
+// ---------------ToDo список задач------------
 
-/*
--- Створити елемент
-document.createElement('tag-name')
+// const todoList = document.querySelector('#todo-list');
+// const todoForm = document.querySelector('#todo-form');
+// const todoInput = document.querySelector('#todo-input');
 
--- Змінити HTML вміст в середині елементу
-element.innerHTML = ''
+// todoForm.addEventListener('submit', formHandler);
 
--- Змінити текстовий вміст в середині елементу
-node.innerText = ''
+// function formHandler(event) {
+//     event.preventDefault(); // відміна стандартної поведінки
+//     // console.log('Submit!');
 
--- Клонування елементу
-node.cloneNode() // true з внутрішнім вмістом (текст та теги), false - без внутрішнього вмісту
+//     // Отримаємо назву задачі з поля вводу(input)
+//     const taskText = todoInput.value
+//     // console.log(taskText);
 
--- Вставити елемент в середину іншого елемента
-element.append(nodesOrDOMStrings)
+//     // Створимо тег <li> через розмітку
+//     const li = `<li>${taskText}</li>`;
+//     // console.log(li);
 
--- Видалити елемент
-element.remove()
-*/
+//     // Додаємо розмітку на сторінку
+//     todoList.insertAdjacentHTML('beforeend', li);
 
-// Вибір контейнеру
-const container = document.querySelector('#elementsContainer');
+//     // Очищення поля введення
+//     todoInput.value = '';
 
-// // Створення заголовку
-// const newHeader = document.createElement('h1');
-// newHeader.textContent = 'New header';
-// container.append(newHeader);
+//     // Перенесення focus на поле введення
+//     todoInput.focus();
+// }
 
-// // Клонування шапки без вмісту
-// const mainHeader = document.querySelector('header');
-// const headerCopy = mainHeader.cloneNode()
-// container.append(headerCopy);
+const todoList = document.querySelector('#todo-list');
+const todoForm = document.querySelector('#todo-form');
+const todoInput = document.querySelector('#todo-input');
 
-// // Клонування шапки з вмістом
-// const mainHeader1 = document.querySelector('header');
-// const headerCopy1 = mainHeader.cloneNode(true)
-// container.append(headerCopy1);
+todoForm.addEventListener('submit', formHandler);
 
-// Вставка розмітки через рядки
-// const htmlExample = '<h2>One more header</h2>';
-// container.insertAdjacentHTML('beforeend', htmlExample);
-// .insertAdjacentElement - для елементів, створених за допомогою .documentCreateElement
-// .insertAdjacentText - для того, щоб додати текст
+function formHandler(event) {
+    event.preventDefault();
+    const taskText = todoInput.value;
+    
+    // Створюємо тег li за допомогою створення елементу. Плюсом цього способу є можливість додати event для цього елементу
+    const newTask = document.createElement('li');
+    newTask.innerText = taskText;
+    
+    // Створюємо кнопку Delete
+    const deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('role', 'button');
+    deleteBtn.innerText = 'Delete';
+    deleteBtn.style['margin-left'] = '15px';
+    newTask.append(deleteBtn);
 
-// Додавання розмітки через шаблонні рядки
-const title = 'Header text';
-const htmlExample = `<h2>${title}</h2>`;
-container.insertAdjacentHTML('beforeend', htmlExample)
+    // Додаємо подію на сторінку
+    // 1example
+    deleteBtn.addEventListener('click', function () {
+        this.closest('li').remove();
+    });
+    // 2example  
+    // deleteBtn.addEventListener('click', (event) => event.target.closest('li').remove());
+
+    // Додаємо елемент на сторінку
+    todoList.append(newTask);
+
+    todoInput.value = '';
+    todoInput.focus();
+}
+
