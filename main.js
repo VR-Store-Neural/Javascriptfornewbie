@@ -1,25 +1,30 @@
-// ---------------setInterval------------
+// ---------------Секундомер------------
 
-// const timerIntervalID = setInterval(function () {
-//     console.log('Fired!')
-// }, 2000);
+let counter = 0;
+let timerID;
 
-// clearInterval(timerIntervalID)
+const counterElement = document.querySelector('#counter');
+const startElement = document.querySelector('#start');
+const pauseElement = document.querySelector('#pause');
+const resetElement = document.querySelector('#reset');
 
-// ------------setTimeout-------------
+startElement.onclick = function () {
+    timerID = setInterval (function () {
+        counter = counter + 1;
+        // counter +=1
+        // counter ++;
+        // console.log(counter);
+        counterElement.innerText = counter;
+    }, 1000);
+}
 
-// setTimeout(function () {
-//     console.log('Dodo')
-// }, 3000);
+pauseElement.onclick = function () {
+    clearInterval(timerID);
+}
 
-// --------setInterval + setTimeout-----------
-
-const timerID = setInterval(function () {
-    console.log('Ogonb')
-}, 1000);
-
-setTimeout(function () {
-    clearInterval(timerID)
-}, 10000)
-
-//
+resetElement.onclick = function () {
+    // console.log(resetElement);
+    counter = 0;
+    counterElement.innerText = counter
+    clearInterval(timerID);
+}
