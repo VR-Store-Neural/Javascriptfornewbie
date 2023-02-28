@@ -1,150 +1,281 @@
-// ---------------Callback. Callback hell------------
+// --------------- Promise (обіцянка) ------------
 
-// console.log('Start');
+// const myPromise = new Promise ( function ( resolve, reject) {
+//     console.log('Promise created');
+//     setTimeout ( function () {
+//         // -- запит на сервер
+//         const response = true;
 
-// setTimeout(function () {
-//     console.log('Print after 2s');
-// }, 2000);
-
-// console.log('Finish');
-
-// setTimeout( function () {
-//     console.log('Step up');
-//     setTimeout( function () {
-//         console.log('Step right');
-//         setTimeout( function () {
-//             console.log('Step left');
-//         }, 1000);
-//     }, 2000);
-// }, 3000);
-
-// function checkRooms () {
-//     setTimeout( function () {
-//         console.log('Перевіряємо номери у готелі...');
-//         const availabelRooms = true;
-//         return availabelRooms;
-//     }, 1000)
-// }
-
-// if (checkRooms()) {
-//     console.log('Вільні номери є');
-//     console.log('Їдемо у відпустку');
-// } else {
-//     console.log('Вільних номерів немає');
-//     console.log('Відпустка відміняється');
-// }
-
-// function checkRooms () {
-//     setTimeout( function () {
-//         console.log('Перевіряємо номери у готелі...');
-//         const availabelRooms = true;
-
-//         if (availabelRooms) {
-//             console.log('Вільні номери є');
-//             console.log('Їдемо у відпустку');
+//         if (response) {
+//             let message = "SUCCESS"
+//             resolve(message);
 //         } else {
-//             console.log('Вільних номерів немає');
-//             console.log('Відпустка відміняється');
+//             let message = "FAILED"
+//             reject(message);
 //         }
 //     }, 1000)
-// }
+// });
 
-// checkRooms ();
+// myPromise.then ( function ( data) {
+//     console.log('Then 1');
+//     console.log(data);
+//     return 'data from then 1'
+// }).then ( function ( data) {
+//     console.log('Then 2');
+//     console.log(data);
+// }).catch ( function ( data) {
+//     console.log('Catch');
+//     console.log(data)
+// })
 
-// 1. Перевірити номери у готелі
-// 2. Перевірити авіа-білети
-
-// Летимо у відпустку
-// Відпустка відміняється
-
-// function checkRooms () {
+// const myPromise = new Promise ( function ( resolve, reject) {
+//     console.log('Promise created');
 //     setTimeout ( function () {
-//         console.log('Перевіряємо номери у готелі...');
-//         const availableRooms = true;
+//         const response = true;
 
-//         if (availableRooms) {
-//             success('Вільні номери є');
+//         if (response) {
+//             let message = "SUCCESS"
+//             resolve(message);
 //         } else {
-//             failed('Вільних номерів немає');
+//             let message = "FAILED"
+//             reject(message);
 //         }
-//     }, 1000);
+//     }, 1500)
+// });
+
+// myPromise.then ( function ( data) {
+//     setTimeout( () => {
+//         console.log('Then 1');
+//         console.log(data);
+//     }, 1000)
+// }).then ( function ( data) {
+//     setTimeout ( () => {
+//         console.log('Then 2');
+//     }, 500)
+// }).catch ( function ( data) {
+//     console.log('Catch');
+//     console.log(data)
+// })
+
+// myPromise.then ( function ( data) {
+//     return new Promise ( function ( resolve, reject) {
+//     setTimeout( () => {
+//         console.log('Then 1');
+//         console.log(data);
+//         const response = false;
+//         if (response) {
+//             resolve('Data from then 1');
+//         } else {
+//             reject('Data from then 1');
+//         }
+//     }, 1000)
+// })
+// }).then ( function ( data) {
+//     setTimeout ( () => {
+//         console.log('Then 2');
+//         console.log(data)
+//     }, 500)
+// }).catch ( function ( data) {
+//     console.log('Catch');
+//     console.log(data)
+// })
+
+// ------Ланцюг промісів. Декілька промісів з setTimeout--------
+
+// const checkRooms = new Promise ( function ( resolve, reject) {
+//     setTimeout (function () {
+//         console.log('We check the hotel rooms...');
+//         const availableRooms = false;
+//         if (availableRooms) {
+//             resolve(`There are rooms in hotel`);
+//         } else {
+//             reject(`There aren't rooms in hotel`);
+//         }
+//     }, 1500)
+// })
+
+// checkRooms.then ( function (data) {
+//     console.log('- then 1 -');
+//     console.log('The answer in the previous step:', data);
+//     console.log('We are going on vacation');
+// }).catch( function ( data) {
+//     console.log('- catch -')
+//     console.log('The answer in the previous step:', data);
+//     console.log('Vacation is canceled');
+// })
+
+// const checkRooms = new Promise(function (resolve, reject) {
+//   setTimeout(function () {
+//     console.log("We check the hotel rooms...");
+//     const availableRooms = true;
+//     if (availableRooms) {
+//       resolve(`There are rooms in hotel`);
+//     } else {
+//       reject(`There aren't rooms in hotel`);
+//     }
+//   }, 1500);
+// });
+
+// checkRooms
+//   .then(function (data) {
+//     return new Promise(function (resolve, reject) {
+//       setTimeout(() => {
+//         console.log("- then 1 -");
+//         console.log("The answer in the previous step:", data);
+//         console.log("We are checking the plane tickets...");
+//         const availableTickets = true;
+//         if (availableTickets) {
+//           let message = "There are tickets";
+//           resolve(message);
+//         } else {
+//           let message = "There arent tickets";
+//           reject(message);
+//         }
+//       }, 1000);
+//     });
+//   })
+//   .then(function (data) {
+//     console.log("- then  2 -");
+//     console.log(`The answer in the previous step:`, data);
+//     console.log(`We are going on vacation`);
+//   })
+//   .catch(function (data) {
+//     console.log("- catch -");
+//     console.log("The answer in the previous step:", data);
+//     console.log("Vacation is canceled");
+//   });
+
+// ----Обгортаємо... Створюємо відокремлені проміси----
+
+// checkRooms()
+//     .then(checkTickets)
+//     .then(success)
+//     .catch(failed);
+
+// function checkRooms() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       console.log("We check the hotel rooms...");
+//       const availableRooms = true;
+//       if (availableRooms) {
+//         resolve(`There are rooms in hotel`);
+//       } else {
+//         reject(`There aren't rooms in hotel`);
+//       }
+//     }, 1500);
+//   });
 // }
 
-function cancelVacation(message) {
-  console.log("--- cancelVacation ---");
-  console.log("Відповідь на минулому кроці:", message);
-  console.log("Відпустка відміняється");
-}
-
-function submitVacation(message) {
-  console.log("--- submitVacation ---");
-  console.log("Відповідь на минулому кроці:", message);
-  console.log("Їдемо у відпустку");
-}
-
-// function checkRooms () {
-//     setTimeout ( function () {
-//         console.log('Перевіряємо номери у готелі...');
-//         const availableRooms = true;
-
-//         if (availableRooms) {
-//             let message = 'Вільні номери є';
-//             submitVacation(message)
-//         } else {
-//             let message = 'Вільних номерів немає';
-//             cancelVacation(message)
-//         }
+// function checkTickets(data) {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(() => {
+//       console.log("- then 1 -");
+//       console.log("The answer in the previous step:", data);
+//       console.log("We are checking the plane tickets...");
+//       const availableTickets = false;
+//       if (availableTickets) {
+//         let message = "There are tickets";
+//         resolve(message);
+//       } else {
+//         let message = "There arent tickets";
+//         reject(message);
+//       }
 //     }, 1000);
+//   });
 // }
 
-// checkRooms ();
+// function success(data) {
+//   console.log("- success -");
+//   console.log(`The answer in the previous step:`, data);
+//   console.log(`We are going on vacation`);
+// }
 
-function checkRooms(success, failed) {
-  setTimeout(function () {
-    console.log("Перевіряємо номери у готелі...");
-    const availableRooms = true;
+// function failed(data) {
+//   console.log("--- failed ---");
+//   console.log("The answer in the previous step:", data);
+//   console.log("Vacation is canceled");
+// }
 
-    if (availableRooms) {
-      let message = "Вільні номери є";
-      success(message);
-    } else {
-      let message = "Вільних номерів немає";
-      failed(message);
-    }
-  }, 1000);
-}
+// ---- Async functions. Асинхронні функції. Використання промісу -----
 
-function checkTickets(message, success, failed) {
-  setTimeout(function () {
-    console.log("--- function checkTickets ---");
-    console.log("Відповідь у минулому кроці:", message);
+// function promiseFunction() {
+//     return new Promise( function(resolve, reject) {
+//         setTimeout(() => {
+//             const result = false;
+//             if (result) {
+//                 resolve('DONE');
+//             } else {
+//                 reject('FAIL');
+//             }
+//         }, 500);
+//     })
+// }
 
-    console.log("Перевіряємо авіабілети...");
-    const availableTickets = false;
-    //----код, який відправляє запит у авіакомпанію---
-    if (availableTickets) {
-      let message = "Вільні авіа-білети є";
-      success(message);
-    } else {
-      let message = "Вільних авіа-білетів немає";
-      failed(message);
-    }
-  }, 500);
-}
+// async function startPromise() {
+//     try {
+//         const result = await promiseFunction();
+//         console.log(result);
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
-checkRooms(
-  function (messageFromCheckRooms) {
-    checkTickets(
-      messageFromCheckRooms,
-      function (messageFromCheckTickets) {
-        submitVacation(messageFromCheckTickets);
-      },
-      function (messageFromCheckTickets) {
-        cancelVacation(messageFromCheckTickets);
+// startPromise();
+
+// ----Several async operations. A series of promices----
+
+function checkRooms() {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      console.log("We check the hotel rooms...");
+      let availableRooms = true;
+      if (availableRooms) {
+        resolve("There are rooms in hotel");
+      } else {
+        reject("There arent rooms in hotel");
       }
-    );
-  },
-  function (messageFromCheckRooms) {
-    cancelVacation(messageFromCheckRooms);
-  }
-);
+    }, 1500);
+  });
+}
+
+function checkTickets(data) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log("- checkTickets -");
+      console.log("The answer in the previous step:", data);
+      console.log("We are checking the plane tickets...");
+      const availableTickets = true;
+      if (availableTickets) {
+        let message = "There are tickets";
+        resolve(message);
+      } else {
+        let message = "There arent tickets";
+        reject(message);
+      }
+    }, 1000);
+  });
+}
+
+function submitVacation(data) {
+  console.log("- Submit -");
+  console.log(`The answer in the previous step:`, data);
+  console.log(`We are going on vacation`);
+}
+
+function cancelVacation(data) {
+  console.log("--- Cancel ---");
+  console.log("The answer in the previous step:", data);
+  console.log("Vacation is canceled");
+}
+
+async function checkVacation() {
+    try {
+        const roomsResult = await checkRooms();
+        const ticketsResult = await checkTickets(roomsResult);
+        submitVacation(ticketsResult)
+    } catch (err) {
+        cancelVacation(err)
+    }
+}
+
+checkVacation();
